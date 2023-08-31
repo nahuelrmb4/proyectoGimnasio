@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Producto(models.Model):
-    #campos
+    #Campos/Atributos definidos a través de recursos de la clase base para después poder ser validados con los métodos propios de la clase.
     nombre = models.CharField(max_length=100)
     descripcion = models.TextField()
     precio = models.DecimalField(max_digits=8, decimal_places=2)

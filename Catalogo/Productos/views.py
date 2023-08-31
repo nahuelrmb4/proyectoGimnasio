@@ -18,7 +18,7 @@ def crearProducto(request):
     #Si la petición es por POST se procesan los valores ingresados
     if request.method == 'POST':
         formularioPOST = productoForm(request.POST)
-        #Si los valores son válidos se crea un nuevo registro
+        #Si los valores son válidos(utiliza un método booleano) se crea un nuevo registro
         if formularioPOST.is_valid:
             formularioPOST.save()
             #Luego de guardar se redirecciona a la ruta de Productos
@@ -48,14 +48,17 @@ def listarProductos(request):
 
 
 def editarProducto(request, id):
-    #se obtiene el registro en base a su id
+    #Se obtiene el registro en base a su id
     productoEditar = Producto.objects.get(pk=id)
+    #formEditar torma el valor de un formulario con los valores de la instancia buscada por Id.
+    formEditar = productoForm(instance=productoEditar)
+
     contextoGet = {
         'form': formEditar,
         'mensaje': 'Editar Producto'
     }
     if request.method == 'GET':
-        formEditar = productoForm(instance=productoEditar)
+        # ---- formEditar = productoForm(instance=productoEditar) ---- Esto estaba acá en la guía pero daba error porque formEditar saltaba como variable #sin asociar a un valor. Se corrió a las primeras líneas de la función por fuera del If.
         return render(request, 'Productos/formProducto.html', contextoGet)
 
     else:
@@ -65,7 +68,7 @@ def editarProducto(request, id):
             #Redirecciona a la url que lista los productos
             return redirect('listarProductos')
 
-
+#Esta función no utiliza template, no utiliza el método render().
 def borrarProducto(request, id):
     productoBorrar = Producto.objects.get(pk=id)
     productoBorrar.delete()
