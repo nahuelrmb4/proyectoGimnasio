@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{titulo}}</title>
+</head>
+<body>
+
+    <h2>{{titulo}}</h2>
+
+    <ul>
+        {% for producto in productos %}
+        <li>
+            <p>
+                Producto ID: {{producto.id}}<br>
+                Nombre: {{producto.nombre}}<br>
+                Descripción: {{producto.descripcion}}<br>
+                Precio: {{producto.precio}}<br>
+                Stock: {{producto.stock}}<br>
+                Disponible: {{producto.disponible}}<br>
+                Fecha de Creación: {{producto.fecha_creacion}}<br>
+                Fecha de Actualización: {{producto.fecha_actualizacion}}<br>
+                <a href=" {% url 'editarProducto' producto.id %} ">
+                    <button>Editar</button>
+                </a>
+                <a href=" {% url 'borrarProducto' producto.id %} ">
+                    <button>Borrar</button>
+                </a>
+            </p>
+        </li>
+        <hr>
+        <br>
+        {% endfor %}
+    </ul>
+
+    <a href=" {% url 'crearProducto' %} ">
+        <button>Agregar Producto</button>
+    </a>
+    
+</body>
+</html>
