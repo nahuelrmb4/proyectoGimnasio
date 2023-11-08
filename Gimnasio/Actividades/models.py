@@ -17,6 +17,6 @@ class Horario(models.Model):
 
 class Actividad(models.Model):
     nombre = models.CharField(max_length=50)
-    dias = models.ManyToManyField(Dia)
-    horarios = models.ManyToManyField(Horario)
+    dia = models.ForeignKey(Dia, on_delete=models.CASCADE)
+    horario = models.ForeignKey(Horario, on_delete=models.CASCADE)
     alumnos = models.ManyToManyField(Alumno)

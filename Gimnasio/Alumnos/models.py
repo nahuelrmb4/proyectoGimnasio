@@ -20,6 +20,9 @@ class Alumno(models.Model):
     def __str__(self):
         return self.apellido
 
+    class Meta:
+        ordering = ('apellido')
+
 class Cuota(models.Model):
     emision = models.DateField(auto_now_add=True)
     vencimiento = models.DateField()

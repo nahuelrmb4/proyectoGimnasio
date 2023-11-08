@@ -13,8 +13,19 @@ class Entrenador(models.Model):
         through_fields=("entrenador", "actividad")
     )
 
+    def __str__(self):
+        return self.apellido
+
+    class Meta:
+        ordering = ('apellido')
+
 class Clase(models.Model):
-    entrenador = models.ForeignKey(Entrenador, on_delete=models.CASCADE)
+    fecha = models.DateField(auto_now_add=True)
     actividad = models.ForeignKey(Actividad, on_delete=models.CASCADE)
-    fecha = models.DateField()
+    entrenador = models.ForeignKey(Entrenador, on_delete=models.CASCADE)
+    asistencia = models.CharField(max_length=20)
+    
+    
+    
+    
     
