@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gimnasio</title>
+</head>
+<body>
+    <h1>Página Principal del sistema de Gestión de Gimnasio</h1><br>
+    <p>
+        <a href=" {% url 'listaActividades'  %} ">
+            <button>Actividades</button>
+        </a>
+        <a href=" {% url 'listaEntrenadores' %} ">
+            <button>Entrenadores</button>
+        </a>
+        <a href=" {% url 'listaPlanes' %} ">
+            <button>Planes</button>
+        </a>
+        <a href=" {% url 'listaAlumnos' %} ">
+            <button>Alumnos</button>
+        </a>
+    </p>
+
+</body>
+</html>

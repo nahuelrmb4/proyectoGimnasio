@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{titulo}}</title>
+</head>
+<body>
+    <h2>{{titulo}}</h2>
+
+    <ul>
+        {% for clase in clases %}
+        <li>
+            <p>
+                Clase ID: {{clase.id}}<br>
+                Fecha: {{clase.fecha}}<br>
+                Nombre: {{clase.actividad.nombre}}<br>
+                Día: {{clase.actividad.dia}}<br>
+                Horario: {{clase.actividad.horario}}<br>
+                Entrenador: {{clase.entrenador}}<br>
+                Asistencia del entrenador: {{clase.asistencia}}<br>
+            </p>
+        </li>
+        <hr>
+        <br>
+        {% endfor %}
+    </ul>
+    <a href=" {% url 'crearClase' %} ">
+        <button>Agregar Clase</button>
+    </a>
+</body>
+</html>

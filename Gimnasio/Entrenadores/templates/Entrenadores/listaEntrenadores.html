@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{titulo}}</title>
+</head>
+<body>
+    <h2>{{titulo}}</h2>
+
+    <ul>
+        {% for entrenador in entrenadores %}
+        <li>
+            <p>
+                Entrenador ID: {{entrenador.id}}<br>
+                Nombre: {{entrenador.nombre}}<br>
+                Apellido: {{entrenador.apellido}}<br>
+                DNI: {{entrenador.dni}}<br>
+                Actividades: {% for actividad in entrenador.actividades.distinct %} {{actividad}}, {% endfor %}<br>
+                <a href=" {% url 'editarEntrenador' entrenador.id %} ">
+                    <button>Editar</button>
+                </a>
+                <a href=" {% url 'borrarEntrenador' entrenador.id %} ">
+                    <button>Borrar</button>
+                </a>
+            </p>
+        </li>
+        <hr>
+        <br>
+        {% endfor %}
+    </ul>
+    <a href=" {% url 'crearEntrenador' %} ">
+        <button>Nuevo Entrenador</button>
+    </a>
+</body>
+</html>
