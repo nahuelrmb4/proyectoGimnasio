@@ -17,13 +17,13 @@ class Entrenador(models.Model):
         return self.apellido
 
     class Meta:
-        ordering = ('apellido')
+        ordering = ['apellido']
 
 class Clase(models.Model):
     fecha = models.DateField(auto_now_add=True)
     actividad = models.ForeignKey(Actividad, on_delete=models.CASCADE)
     entrenador = models.ForeignKey(Entrenador, on_delete=models.CASCADE)
-    asistencia = models.CharField(max_length=20)
+    asistencia = models.CharField(max_length=20, null=True, blank=True, default='sin registro')
     
     
     

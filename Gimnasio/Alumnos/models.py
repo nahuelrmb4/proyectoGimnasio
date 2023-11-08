@@ -4,7 +4,7 @@ from django.db import models
 
 class Plan(models.Model):
     nombre = models.CharField(max_length=20)
-    importe = models.FloatField
+    importe = models.FloatField()
 
     def __str__(self):
         return self.nombre
@@ -21,7 +21,7 @@ class Alumno(models.Model):
         return self.apellido
 
     class Meta:
-        ordering = ('apellido')
+        ordering = ['apellido']
 
 class Cuota(models.Model):
     emision = models.DateField(auto_now_add=True)

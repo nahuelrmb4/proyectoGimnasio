@@ -20,3 +20,10 @@ class Actividad(models.Model):
     dia = models.ForeignKey(Dia, on_delete=models.CASCADE)
     horario = models.ForeignKey(Horario, on_delete=models.CASCADE)
     alumnos = models.ManyToManyField(Alumno)
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        ordering = ['nombre']
+
