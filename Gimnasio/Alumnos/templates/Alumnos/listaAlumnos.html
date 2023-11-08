@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{titulo}}</title>
+</head>
+<body>
+    <h2>{{titulo}}</h2>
+
+    <ul>
+        {% for alumno in alumnos %}
+        <li>
+            <p>
+                Alumno ID: {{alumno.id}}<br>
+                Nombre: {{alumno.nombre}}<br>
+                Apellido: {{alumno.apellido}}<br>
+                Edad: {{alumno.edad}}<br>
+                DNI: {{alumno.dni}}<br>
+                Email: {{alumno.email}}<br>
+                Plan: {{alumno.plan}}<br>
+                <a href=" {% url 'editarAlumno' alumno.id %} ">
+                    <button>Editar</button>
+                </a>
+                <a href=" {% url 'borrarAlumno' alumno.id %} ">
+                    <button>Borrar</button>
+                </a>
+            </p>
+        </li>
+        <hr>
+        <br>
+        {% endfor %}
+    </ul>
+    <a href=" {% url 'crearAlumno' %} ">
+        <button>Nuevo Alumno</button>
+    </a>
+</body>
+</html>
