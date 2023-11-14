@@ -17,7 +17,10 @@
                 Nombre: {{entrenador.nombre}}<br>
                 Apellido: {{entrenador.apellido}}<br>
                 DNI: {{entrenador.dni}}<br>
-                Actividades: {% for actividad in entrenador.actividades.distinct %} {{actividad}}, {% endfor %}<br>
+                Actividades:
+                {% for actividad in entrenador.actividad_set.all %}
+                    {{actividad}}
+                {% endfor %}<br>
                 <a href=" {% url 'editarEntrenador' entrenador.id %} ">
                     <button>Editar</button>
                 </a>
