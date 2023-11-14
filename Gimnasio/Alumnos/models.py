@@ -1,5 +1,5 @@
 from django.db import models
-
+from Actividades.models import Actividad
 # Create your models here.
 
 class Plan(models.Model):
@@ -16,6 +16,7 @@ class Alumno(models.Model):
     dni = models.PositiveIntegerField()
     email = models.EmailField()
     plan = models.ForeignKey(Plan, null=True, blank=True, on_delete=models.SET_NULL)
+    actividades = models.ManyToManyField(Actividad, null=True, blank=True)
 
     def __str__(self):
         return self.apellido

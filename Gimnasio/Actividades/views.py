@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from .models import Dia, Horario, Actividad
-from .forms import diaForm, horarioForm, actividadForm
+from .models import Dia, Horario, Actividad, Clase
+from Alumnos.models import Alumno
+from .forms import diaForm, horarioForm, actividadForm, claseForm
 
 # Create your views here.
 
@@ -61,9 +62,11 @@ def crearHorario(request):
 
 def listarActividades(request):
     actividades = Actividad.objects.all()
+    alumnos = Alumno.objects.all()
     contexto = {
         'titulo': 'Lista de Actividades',
-        'actividades': actividades
+        'actividades': actividades,
+        'alumnos': alumnos
     }
     return render(request, 'Actividades/listaActividades.html', contexto)
 
@@ -105,3 +108,29 @@ def borrarActividad(request, id):
     actividadBorrar = Actividad.objects.get(pk=id)
     actividadBorrar.delete()
     return redirect('listaActividades')
+
+def listarClases(request):
+    clases = Clase.objects.all()
+    contexto = {
+        'titulo': 'Lista de Clases',
+        'clases': clases
+    }
+    return render(request, 'Actividades/listaClases.html', contexto)
+
+def crearClase(request):
+    formulario = claseForm()
+    contexto = {
+        'form': formulario,
+        'mensaje': 'Agregar Clase'
+    }
+    if request.method == 'POST':
+        formularioPOST = claseForm(request.POST)
+        if formularioPOST.is_valid():
+            formularioPOST.save()
+            return redirect('listaClases')
+        else:
+            contexto['mensaje'] += 'Error en el formulario'
+            contexto['form'] = formularioPOST
+            return render(request, 'Actividades/formClase.html', contexto)
+    else:
+        return render(request, 'Actividades/formClase.html', contexto)

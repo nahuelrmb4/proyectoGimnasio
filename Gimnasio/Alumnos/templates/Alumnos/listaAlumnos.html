@@ -20,6 +20,10 @@
                 DNI: {{alumno.dni}}<br>
                 Email: {{alumno.email}}<br>
                 Plan: {{alumno.plan}}<br>
+                Actividades: 
+                {% for actividad in alumno.actividades.all %}
+                    {{actividad}}
+                {% endfor %}<br>
                 <a href=" {% url 'editarAlumno' alumno.id %} ">
                     <button>Editar</button>
                 </a>
@@ -34,6 +38,9 @@
     </ul>
     <a href=" {% url 'crearAlumno' %} ">
         <button>Nuevo Alumno</button>
+    </a>
+    <a href=" {% url 'HomePage' %} ">
+        <button>Volver</button>
     </a>
 </body>
 </html>

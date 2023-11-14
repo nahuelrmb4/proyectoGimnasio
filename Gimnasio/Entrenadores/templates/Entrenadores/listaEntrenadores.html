@@ -13,7 +13,7 @@
         {% for entrenador in entrenadores %}
         <li>
             <p>
-                Entrenador ID: {{entrenador.id}}<br>
+                <!-- Entrenador ID: {{entrenador.id}}<br> -->
                 Nombre: {{entrenador.nombre}}<br>
                 Apellido: {{entrenador.apellido}}<br>
                 DNI: {{entrenador.dni}}<br>
@@ -32,6 +32,9 @@
     </ul>
     <a href=" {% url 'crearEntrenador' %} ">
         <button>Nuevo Entrenador</button>
+    </a>
+    <a href=" {% url 'HomePage' %} ">
+        <button>Volver</button>
     </a>
 </body>
 </html>

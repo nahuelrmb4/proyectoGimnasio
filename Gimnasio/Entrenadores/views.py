@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Entrenador, Clase
-from .forms import entrenadorForm, claseForm
+from .models import Entrenador
+from .forms import entrenadorForm
 
 # Create your views here.
 
@@ -52,28 +52,3 @@ def borrarEntrenador(request, id):
     return redirect('listaEntrenadores')
 
 
-def listarClases(request):
-    clases = Clase.objects.all()
-    contexto = {
-        'titulo': 'Lista de Clases',
-        'clases': clases
-    }
-    return render(request, 'Entrenadores/listaClases.html', contexto)
-
-def crearClase(request):
-    formulario = claseForm()
-    contexto = {
-        'form': formulario,
-        'mensaje': 'Agregar Clase'
-    }
-    if request.method == 'POST':
-        formularioPOST = claseForm(request.POST)
-        if formularioPOST.is_valid():
-            formularioPOST.save()
-            return redirect('listaClases')
-        else:
-            contexto['mensaje'] += 'Error en el formulario'
-            contexto['form'] = formularioPOST
-            return render(request, 'Entrenadores/formClase.html', contexto)
-    else:
-        return render(request, 'Entrenadores/formClase.html', contexto)

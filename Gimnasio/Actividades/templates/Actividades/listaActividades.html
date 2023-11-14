@@ -13,11 +13,18 @@
         {% for actividad in actividades %}
         <li>
             <p>
-                Actividad ID: {{actividad.id}}<br>
+                <!-- Actividad ID: {{actividad.id}}<br> -->
                 Nombre: {{actividad.nombre}}<br>
                 Día: {{actividad.dia}}<br>
                 Horario: {{actividad.horario}}<br>
-                Alumnos: {% for alumno in actividad.alumnos.all %} {{alumno}}, {% endfor %}<br>
+                Entrenador: {% for entrenador in actividad.entrenadores.all %}
+                {{entrenador}}
+            {% endfor %}<br>
+                Alumnos:
+                {% for alumno in actividad.alumno_set.all %}
+                    {{alumno.nombre}}
+                {% endfor %}<br>
+                
                 <a href=" {% url 'editarActividad' actividad.id %} ">
                     <button>Editar</button>
                 </a>
@@ -32,6 +39,9 @@
     </ul>
     <a href=" {% url 'crearActividad' %} ">
         <button>Agregar Actividad</button>
+    </a>
+    <a href=" {% url 'HomePage' %} ">
+        <button>Volver</button>
     </a>
 </body>
 </html>
