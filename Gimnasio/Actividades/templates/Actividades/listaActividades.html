@@ -1,47 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{titulo}}</title>
-</head>
-<body>
+    <script src="../../../Public/scriptAlert.js"></script>
+  </head>
+  <body>
     <h2>{{titulo}}</h2>
 
     <ul>
-        {% for actividad in actividades %}
-        <li>
-            <p>
-                <!-- Actividad ID: {{actividad.id}}<br> -->
-                Nombre: {{actividad.nombre}}<br>
-                Día: {{actividad.dia}}<br>
-                Horario: {{actividad.horario}}<br>
-                Entrenador: {% for entrenador in actividad.entrenadores.all %}
-                {{entrenador}}
-            {% endfor %}<br>
-                Alumnos:
-                {% for alumno in actividad.alumno_set.all %}
-                    {{alumno.nombre}}
-                {% endfor %}<br>
-                
-                <a href=" {% url 'editarActividad' actividad.id %} ">
-                    <button>Editar</button>
-                </a>
-                <a href=" {% url 'borrarActividad' actividad.id %} ">
-                    <button>Borrar</button>
-                </a>
-            </p>
-        </li>
-        <hr>
-        <br>
-        {% endfor %}
+      {% for actividad in actividades %}
+      <li>
+        <p>
+          <!-- Actividad ID: {{actividad.id}}<br> -->
+          Nombre: {{actividad.nombre}}<br />
+          Día: {{actividad.dia}}<br />
+          Horario: {{actividad.horario}}<br />
+          Entrenador: {% for entrenador in actividad.entrenadores.all %}
+          {{entrenador}} {% endfor %}<br />
+          Alumnos: {% for alumno in actividad.alumno_set.all %}
+          {{alumno.nombre}} {% endfor %}<br />
+
+          <a href=" {% url 'editarActividad' actividad.id %} ">
+            <button>Editar</button>
+          </a>
+          <a href=" {% url 'borrarActividad' actividad.id %} ">
+            <button onclick="confirmarBorrado()">Borrar</button>
+          </a>
+        </p>
+      </li>
+      <hr />
+      <br />
+      {% endfor %}
     </ul>
     <a href=" {% url 'crearActividad' %} ">
-        <button>Agregar Actividad</button>
+      <button>Agregar Actividad</button>
     </a>
     <a href=" {% url 'HomePage' %} ">
-        <button>Volver</button>
+      <button>Volver</button>
     </a>
-</body>
+  </body>
 </html>

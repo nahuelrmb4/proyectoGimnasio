@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{titulo}}</title>
-</head>
-<body>
+    <script src="../../../Public/scriptAlert.js"></script>
+  </head>
+  <body>
     <h2>{{titulo}}</h2>
 
     <ul>
-        {% for plan in planes %}
-        <li>
-            <p>
-                Plan ID: {{plan.id}}<br>
-                Nombre: {{plan.nombre}}<br>
-                Valor: {{plan.importe}}<br>
-                <a href=" {% url 'editarPlan' plan.id %} ">
-                    <button>Editar</button>
-                </a>
-                <a href=" {% url 'borrarPlan' plan.id %} ">
-                    <button>Borrar</button>
-                </a>
-            </p>
-        </li>
-        <hr>
-        <br>
-        {% endfor %}
+      {% for plan in planes %}
+      <li>
+        <p>
+          Plan ID: {{plan.id}}<br />
+          Nombre: {{plan.nombre}}<br />
+          Valor: {{plan.importe}}<br />
+          <a href=" {% url 'editarPlan' plan.id %} ">
+            <button>Editar</button>
+          </a>
+          <a href=" {% url 'borrarPlan' plan.id %} ">
+            <button onclick="confirmarBorrado()">Borrar</button>
+          </a>
+        </p>
+      </li>
+      <hr />
+      <br />
+      {% endfor %}
     </ul>
     <a href=" {% url 'crearPlan' %} ">
-        <button>Agregar Plan</button>
+      <button>Agregar Plan</button>
     </a>
     <a href=" {% url 'HomePage' %} ">
-        <button>Volver</button>
+      <button>Volver</button>
     </a>
-</body>
+  </body>
 </html>
