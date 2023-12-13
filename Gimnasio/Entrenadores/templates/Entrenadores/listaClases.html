@@ -8,12 +8,17 @@
 </head>
 <body>
     <h2>{{titulo}}</h2>
-
+    <a href=" {% url 'crearClase' %} ">
+        <button>Agregar Clase</button>
+    </a>
+    <a href=" {% url 'HomePage' %} ">
+        <button>Volver</button>
+    </a>
     <ul>
         {% for clase in clases %}
         <li>
             <p>
-                Clase ID: {{clase.id}}<br>
+                <!-- Clase ID: {{clase.id}}<br> -->
                 Fecha: {{clase.fecha}}<br>
                 Nombre: {{clase.actividad.nombre}}<br>
                 Día: {{clase.actividad.dia}}<br>
@@ -26,8 +31,5 @@
         <br>
         {% endfor %}
     </ul>
-    <a href=" {% url 'crearClase' %} ">
-        <button>Agregar Clase</button>
-    </a>
 </body>
 </html>

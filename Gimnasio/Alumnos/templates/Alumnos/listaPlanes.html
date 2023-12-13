@@ -8,7 +8,12 @@
 </head>
 <body>
     <h2>{{titulo}}</h2>
-
+    <a href=" {% url 'crearPlan' %} ">
+        <button>Agregar Plan</button>
+    </a>
+    <a href=" {% url 'HomePage' %} ">
+        <button>Volver</button>
+    </a>
     <ul>
         {% for plan in planes %}
         <li>
@@ -19,7 +24,7 @@
                 <a href=" {% url 'editarPlan' plan.id %} ">
                     <button>Editar</button>
                 </a>
-                <a href=" {% url 'borrarPlan' plan.id %} ">
+                <a href=" {% url 'borrarPlan' plan.id %} " onclick="return confirm('¿Está seguro que desea eliminar el registro?')">
                     <button>Borrar</button>
                 </a>
             </p>
@@ -28,8 +33,5 @@
         <br>
         {% endfor %}
     </ul>
-    <a href=" {% url 'crearPlan' %} ">
-        <button>Agregar Plan</button>
-    </a>
 </body>
 </html>

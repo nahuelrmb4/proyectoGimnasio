@@ -10,16 +10,19 @@
     <h2>{{titulo}}</h2>
 
     <ul>
-        {% for horario in horarios %}
+        {% for dia in dias %}
         <li>
             <p>
-                Día ID: {{horario.id}}<br>
-                Nombre: {{horario.nombre}}<br>
+                Día ID: {{dia.id}}<br>
+                Nombre: {{dia.nombre}}<br>
             </p>
         </li>
         <hr>
         <br>
         {% endfor %}
     </ul>
+    <a href=" {% url 'crearDia' %} ">
+        <button>Agregar Día</button>
+    </a>
 </body>
 </html>

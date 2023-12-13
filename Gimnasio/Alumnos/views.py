@@ -24,7 +24,7 @@ def crearPlan(request):
             formularioPOST.save()
             return redirect('listaPlanes')
         else:
-            contexto['mensaje'] += 'Error en el formulario'
+            contexto['mensaje'] += ' - Error en el formulario'
             contexto['form'] = formularioPOST
             return render(request, 'Alumnos/formPlan.html', contexto)
     else:
@@ -54,7 +54,7 @@ def borrarPlan(request, id):
 def listarCuotas(request):
     cuotas = Cuota.objects.all()
     contexto = {
-        'titulo': 'Lista de Cuotas',
+        'titulo': 'Lista de Pagos',
         'cuotas': cuotas
     }
     return render(request, 'Alumnos/listaCuotas.html', contexto)
@@ -63,7 +63,7 @@ def crearCuota(request):
     formulario = cuotaForm()
     contexto = {
         'form': formulario,
-        'mensaje': 'Agregar Cuota'
+        'mensaje': 'Agregar Pago'
     }
     if request.method == 'POST':
         formularioPOST = cuotaForm(request.POST)
@@ -71,7 +71,7 @@ def crearCuota(request):
             formularioPOST.save()
             return redirect('listaCuotas')
         else:
-            contexto['mensaje'] += 'Error en el formulario'
+            contexto['mensaje'] += ' - Error en el formulario'
             contexto['form'] = formularioPOST
             return render(request, 'Alumnos/formCuota.html', contexto)
     else:
@@ -97,7 +97,7 @@ def crearAlumno(request):
             formularioPOST.save()
             return redirect('listaAlumnos')
         else:
-            contexto['mensaje'] += 'Error en el formulario'
+            contexto['mensaje'] += ' - Error en el formulario'
             contexto['form'] = formularioPOST
             return render(request, 'Alumnos/formAlumno.html', contexto)
     else:

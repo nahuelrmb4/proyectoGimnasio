@@ -1,5 +1,5 @@
-from django.forms import ModelForm
-from .models import Dia, Horario, Actividad
+from django.forms import ModelForm, forms
+from .models import Dia, Horario, Actividad, Clase
 
 class diaForm(ModelForm):
     class Meta:
@@ -15,3 +15,11 @@ class actividadForm(ModelForm):
     class Meta:
         model = Actividad
         fields = '__all__'
+
+class claseForm(ModelForm):
+    class Meta:
+        model = Clase
+        fields = '__all__'
+        labels = {
+            'asistencia': ('Asistencia del Entrenador'),
+        }
