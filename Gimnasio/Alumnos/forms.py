@@ -1,5 +1,6 @@
 from django.forms import ModelForm
 from .models import Plan, Cuota, Alumno
+from django.core.exceptions import ValidationError
 
 class planForm(ModelForm):
     class Meta:
@@ -10,6 +11,9 @@ class cuotaForm(ModelForm):
     class Meta:
         model = Cuota
         fields = '__all__'
+        labels = {
+            'pago': ('Fecha de pago (MM/DD/AAAA)'),
+        }
 
 class alumnoForm(ModelForm):
     class Meta:

@@ -1,5 +1,5 @@
 from django.db import models
-from Alumnos.models import Alumno
+from Entrenadores.models import Entrenador
 
 # Create your models here.
 
@@ -19,11 +19,17 @@ class Actividad(models.Model):
     nombre = models.CharField(max_length=50)
     dia = models.ForeignKey(Dia, on_delete=models.CASCADE)
     horario = models.ForeignKey(Horario, on_delete=models.CASCADE)
-    alumnos = models.ManyToManyField(Alumno)
+    entrenadores = models.ManyToManyField(Entrenador)
 
     def __str__(self):
-        return self.nombre
+        return f'{self.nombre} {self.dia} {self.horario}'
 
     class Meta:
-        ordering = ['nombre']
+        ordering = ['id']
+
+class Clase(models.Model):
+    actividad = models.ForeignKey(Actividad, on_delete=models.DO_NOTHING)
+    fecha = models.DateField(auto_now_add=True)
+    asistencia = models.CharField(max_length=30, default='Presente')
+
 

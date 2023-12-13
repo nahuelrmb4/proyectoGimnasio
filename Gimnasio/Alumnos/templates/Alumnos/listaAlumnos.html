@@ -8,7 +8,12 @@
 </head>
 <body>
     <h2>{{titulo}}</h2>
-
+    <a href=" {% url 'crearAlumno' %} ">
+        <button>Nuevo Alumno</button>
+    </a>
+    <a href=" {% url 'HomePage' %} ">
+        <button>Volver</button>
+    </a>
     <ul>
         {% for alumno in alumnos %}
         <li>
@@ -20,10 +25,15 @@
                 DNI: {{alumno.dni}}<br>
                 Email: {{alumno.email}}<br>
                 Plan: {{alumno.plan}}<br>
+                Pago: {{alumno.choice_cuota}}<br>
+                Actividades: 
+                {% for actividad in alumno.actividades.all %}
+                    {{actividad}} |
+                {% endfor %}<br>
                 <a href=" {% url 'editarAlumno' alumno.id %} ">
                     <button>Editar</button>
                 </a>
-                <a href=" {% url 'borrarAlumno' alumno.id %} ">
+                <a href=" {% url 'borrarAlumno' alumno.id %} " onclick="return confirm('¿Está seguro que desea eliminar el registro?')">
                     <button>Borrar</button>
                 </a>
             </p>
@@ -32,8 +42,5 @@
         <br>
         {% endfor %}
     </ul>
-    <a href=" {% url 'crearAlumno' %} ">
-        <button>Nuevo Alumno</button>
-    </a>
 </body>
 </html>

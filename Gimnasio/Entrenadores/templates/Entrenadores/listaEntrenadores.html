@@ -8,20 +8,28 @@
 </head>
 <body>
     <h2>{{titulo}}</h2>
-
+    <a href=" {% url 'crearEntrenador' %} ">
+        <button>Nuevo Entrenador</button>
+    </a>
+    <a href=" {% url 'HomePage' %} ">
+        <button>Volver</button>
+    </a>
     <ul>
         {% for entrenador in entrenadores %}
         <li>
             <p>
-                Entrenador ID: {{entrenador.id}}<br>
+                <!-- Entrenador ID: {{entrenador.id}}<br> -->
                 Nombre: {{entrenador.nombre}}<br>
                 Apellido: {{entrenador.apellido}}<br>
                 DNI: {{entrenador.dni}}<br>
-                Actividades: {% for actividad in entrenador.actividades.distinct %} {{actividad}}, {% endfor %}<br>
+                Actividades:
+                {% for actividad in entrenador.actividad_set.all %}
+                    {{actividad}}
+                {% endfor %}<br>
                 <a href=" {% url 'editarEntrenador' entrenador.id %} ">
                     <button>Editar</button>
                 </a>
-                <a href=" {% url 'borrarEntrenador' entrenador.id %} ">
+                <a href=" {% url 'borrarEntrenador' entrenador.id %} " onclick="return confirm('¿Está seguro que desea eliminar el registro?')">
                     <button>Borrar</button>
                 </a>
             </p>
@@ -30,8 +38,5 @@
         <br>
         {% endfor %}
     </ul>
-    <a href=" {% url 'crearEntrenador' %} ">
-        <button>Nuevo Entrenador</button>
-    </a>
 </body>
 </html>
